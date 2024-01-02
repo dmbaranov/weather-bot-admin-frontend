@@ -1,13 +1,13 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { Chat } from '@/models/Chat'
-import { api } from '@/api'
+import type { IChat } from '@/models/Chat'
+import { chatApi } from '@/api'
 
 export const useChatStore = defineStore('chat', () => {
-  const chats = ref<Chat[]>([])
+  const chats = ref<IChat[]>([])
 
-  async function fetchAllChats() {
-    await api.get<Chat[]>('/chats').then(({ data }) => (chats.value = data))
+  function fetchAllChats() {
+    chatApi.getAll().then(({ data }) => (chats.value = data))
   }
 
   return { chats, fetchAllChats }

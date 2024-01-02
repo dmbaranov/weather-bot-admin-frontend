@@ -1,8 +1,7 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <main>
-    <div>Hello</div>
+    <v-btn>Test</v-btn>
   </main>
 </template>

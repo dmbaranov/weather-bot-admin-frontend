@@ -1,6 +1,6 @@
 import { Platform } from './Platform'
 
-export interface Chat {
+export interface IChat {
   id: string
   platform: Platform
   name: string
