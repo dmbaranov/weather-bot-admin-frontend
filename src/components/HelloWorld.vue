@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { useChatStore } from '@/stores/chat'
+
 defineProps<{
   msg: string
 }>()
+
+const chatStore = useChatStore()
+
+await chatStore.fetchAllChats()
 </script>
 
 <template>
