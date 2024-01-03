@@ -1,13 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Chats from '@/views/chats/Chats.vue'
+import Dashboard from '@/views/dashboard/Dashboard.vue'
+import Chat from '@/views/chat/Chat.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'chats',
-      component: Chats
+      name: 'dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/:chatId',
+      name: 'chat',
+      component: Chat
     }
   ]
 })
