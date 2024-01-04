@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import weatherIcon from '@/assets/weather-icon.jpg'
+import weatherIcon from '@/assets/weather-icon.jpg';
 </script>
 
 <template>
