@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useChatStore } from '@/stores'
+import { useQuery } from '@tanstack/vue-query';
+import { chatApi } from '@/api';
+import { sharedChatQueryParams } from '@/api/chat';
 
-const chatStore = useChatStore()
-const { chats } = storeToRefs(chatStore)
-
-chatStore.fetchAllChats()
+const { data: chats } = useQuery({
+  ...sharedChatQueryParams,
+  queryFn: chatApi.getAll,
+  select: (response) => response.data
+});
 
 const platformToColor = {
   telegram: 'blue',
   discord: 'indigo'
-}
+};
 </script>
 
 <template>
