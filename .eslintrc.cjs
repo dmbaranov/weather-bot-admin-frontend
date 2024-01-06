@@ -7,8 +7,10 @@ module.exports = {
     'plugin:vue/vue3-strongly-recommended',
     'eslint:recommended',
     '@vue/eslint-config-typescript',
-    '@vue/eslint-config-prettier/skip-formatting'
+    '@vue/eslint-config-prettier/skip-formatting',
+    'plugin:@typescript-eslint/recommended'
   ],
+  plugins: ['@typescript-eslint'],
   rules: {
     "vue/multi-word-component-names": 0
   },
