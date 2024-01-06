@@ -14,8 +14,8 @@ const route = useRoute();
 const chatId = route.params.chatId as string;
 
 const platformLinks: Record<Platform, Link[]> = {
-  discord: [{ title: 'Herojob', to: 'herojob' }],
-  telegram: [{ title: 'Accordion', to: 'accordion' }]
+  discord: [{ title: 'Herojob', to: 'Herojob' }],
+  telegram: [{ title: 'Accordion', to: 'Accordion' }]
 };
 
 const { data: chat } = useQuery({
@@ -25,12 +25,7 @@ const { data: chat } = useQuery({
   select: (response) => response.data
 });
 
-let commonLinks: Link[] = [
-  {
-    title: 'Users',
-    to: 'chatUsers'
-  }
-];
+let commonLinks: Link[] = [{ title: 'Users', to: 'ChatUsers' }];
 
 const allLinks = computed<Link[]>(() => {
   if (!chat.value) return commonLinks;
@@ -41,7 +36,16 @@ const allLinks = computed<Link[]>(() => {
 
 <template>
   <VNavigationDrawer :model-value="true" permanent>
-    <VListItem v-for="link in allLinks" :key="link.to" link :title="link.title" :to="{ name: link.to }" />
+    <VListItem v-for="link in allLinks" :key="link.to" link>
+      <RouterLink class="link" :to="{ name: link.to }">{{ link.title }}</RouterLink>
+    </VListItem>
   </VNavigationDrawer>
-  <router-view />
+  <RouterView />
 </template>
+
+<style lang="scss" scoped>
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+</style>

@@ -10,27 +10,27 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'dashboard',
+      name: 'Dashboard',
       component: Dashboard
     },
     {
       path: '/chat/:chatId',
-      name: 'chat',
+      name: 'Chat',
       component: Chat,
       children: [
         {
           path: 'users',
-          name: 'chatUsers',
+          name: 'ChatUsers',
           component: Users
         },
         {
           path: 'herojob',
-          name: 'herojob',
+          name: 'Herojob',
           component: Herojob
         },
         {
           path: 'accordion',
-          name: 'accordion',
+          name: 'Accordion',
           component: Accordion
         }
       ]
