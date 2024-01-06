@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useQuery } from '@tanstack/vue-query';
 import { chatApi, sharedChatQueryParams } from '@/api/chat';
 import type { Platform } from '@/models/Platform';
@@ -11,6 +11,7 @@ interface Link {
 }
 
 const route = useRoute();
+const router = useRouter();
 const chatId = route.params.chatId as string;
 
 const platformLinks: Record<Platform, Link[]> = {
@@ -36,16 +37,9 @@ const allLinks = computed<Link[]>(() => {
 
 <template>
   <VNavigationDrawer :model-value="true" permanent>
-    <VListItem v-for="link in allLinks" :key="link.to" link>
-      <RouterLink class="link" :to="{ name: link.to }">{{ link.title }}</RouterLink>
+    <VListItem v-for="link in allLinks" :key="link.to" link @click="router.push({ name: link.to })">
+      {{ link.title }}
     </VListItem>
   </VNavigationDrawer>
   <RouterView />
 </template>
-
-<style lang="scss" scoped>
-.link {
-  color: inherit;
-  text-decoration: none;
-}
-</style>
