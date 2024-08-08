@@ -18,11 +18,21 @@ const platformToColor = {
 <template>
   <VContainer class="fill-height">
     <VRow justify="center">
-      <VCol v-for="chat in chats" :key="chat.id" class="flex-grow-0">
-        <VBtn :color="platformToColor[chat.platform]" :to="{ name: 'Chat', params: { chatId: chat.id } }">
+      <VCol
+        v-for="chat in chats"
+        :key="chat.id"
+        class="flex-grow-0"
+      >
+        <VBtn
+          :color="platformToColor[chat.platform]"
+          :to="{ name: 'Chat', params: { chatId: chat.id } }"
+        >
           {{ chat.name }}
-          <template v-slot:append>
-            <VIcon :icon="`custom:${chat.platform}`" size="32" />
+          <template #append>
+            <VIcon
+              :icon="`custom:${chat.platform}`"
+              size="32"
+            />
           </template>
         </VBtn>
       </VCol>

@@ -4,9 +4,21 @@ import weatherIcon from '@/assets/weather-icon.jpg';
 
 <template>
   <VAppBar>
-    <VAppBarTitle><RouterLink :to="{ name: 'Dashboard' }" class="link">Weather Bot Admin Panel</RouterLink> </VAppBarTitle>
+    <VAppBarTitle>
+      <RouterLink
+        :to="{ name: 'Dashboard' }"
+        class="link"
+      >
+        Weather Bot Admin Panel
+      </RouterLink>
+    </VAppBarTitle>
     <VSpacer />
-    <VImg :src="weatherIcon" position="right" class="mr-2" max-height="90%" />
+    <VImg
+      :src="weatherIcon"
+      position="right"
+      class="mr-2"
+      max-height="90%"
+    />
   </VAppBar>
 </template>
 
