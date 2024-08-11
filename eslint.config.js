@@ -14,7 +14,8 @@ export default [
   ...pluginVue.configs['flat/recommended'],
   {
     rules: {
-      'vue/multi-word-component-names': 0
+      'vue/multi-word-component-names': 0,
+      'vue/max-attributes-per-line': 0
     }
   }
 ];

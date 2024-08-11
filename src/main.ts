@@ -32,7 +32,8 @@ app.use(VueQueryPlugin, {
   queryClientConfig: {
     defaultOptions: {
       queries: {
-        staleTime: Infinity
+        staleTime: Infinity,
+        retry: false
       }
     }
   }
