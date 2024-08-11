@@ -28,6 +28,14 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(vuetify);
-app.use(VueQueryPlugin);
+app.use(VueQueryPlugin, {
+  queryClientConfig: {
+    defaultOptions: {
+      queries: {
+        staleTime: Infinity
+      }
+    }
+  }
+});
 
 app.mount('#app');

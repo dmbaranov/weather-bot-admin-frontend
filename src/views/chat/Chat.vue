@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router';
-import { useQuery } from '@tanstack/vue-query';
-import { chatApi, sharedChatQueryParams } from '@/api/chat';
-import type { Platform } from '@/models/Platform';
 import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import type { Platform } from '@/models/Platform';
+import { useGetSingleChat } from '@/queries/chat.ts';
 
 interface Link {
   title: string;
@@ -20,12 +19,7 @@ const platformLinks: Record<Platform, Link[]> = {
   telegram: [{ title: 'Accordion', to: 'Accordion' }]
 };
 
-const { data: chat } = useQuery({
-  ...sharedChatQueryParams,
-  queryKey: [...sharedChatQueryParams.queryKey, chatId],
-  queryFn: ({ queryKey }) => chatApi.getSingle(queryKey[1]),
-  select: (response) => response.data
-});
+const { data: chat } = useGetSingleChat(chatId);
 
 const allLinks = computed<Link[]>(() => {
   if (!chat.value) return commonLinks;
@@ -35,16 +29,8 @@ const allLinks = computed<Link[]>(() => {
 </script>
 
 <template>
-  <VNavigationDrawer
-    :model-value="true"
-    permanent
-  >
-    <VListItem
-      v-for="link in allLinks"
-      :key="link.to"
-      link
-      @click="router.push({ name: link.to })"
-    >
+  <VNavigationDrawer :model-value="true" permanent>
+    <VListItem v-for="link in allLinks" :key="link.to" link @click="router.push({ name: link.to })">
       {{ link.title }}
     </VListItem>
   </VNavigationDrawer>
