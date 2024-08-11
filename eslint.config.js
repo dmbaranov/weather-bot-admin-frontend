@@ -1,6 +1,6 @@
 import pluginVue from 'eslint-plugin-vue';
 import js from '@eslint/js';
-// import ts from 'typescript-eslint';
+import ts from 'typescript-eslint';
 
 export default [
   {
@@ -10,12 +10,11 @@ export default [
       }
     }
   },
+  ...ts.config(js.configs.recommended, ...ts.configs.recommended),
   ...pluginVue.configs['flat/recommended'],
   {
     rules: {
       'vue/multi-word-component-names': 0
     }
-  },
-  js.configs.recommended
-  // ...ts.configs.recommended // TODO: uncomment once ESLint 9 is properly supported
+  }
 ];
