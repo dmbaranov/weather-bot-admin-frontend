@@ -9,6 +9,7 @@ import { VueQueryPlugin } from '@tanstack/vue-query';
 import App from './App.vue';
 import router from './router';
 import { customIconSet } from './utils';
+import { queryClient } from './queries/query';
 import './styles/main.scss';
 
 const vuetify = createVuetify({
@@ -28,15 +29,6 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(vuetify);
-app.use(VueQueryPlugin, {
-  queryClientConfig: {
-    defaultOptions: {
-      queries: {
-        staleTime: Infinity,
-        retry: false
-      }
-    }
-  }
-});
+app.use(VueQueryPlugin, { queryClient });
 
 app.mount('#app');
