@@ -7,10 +7,11 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import { VueQueryPlugin } from '@tanstack/vue-query';
 import App from './App.vue';
+// import router from '../router';
 import router from './router';
-import { customIconSet } from './utils';
-import { queryClient } from './queries/query';
-import './styles/main.scss';
+import { customIconSet } from '../utils';
+import { queryClient } from '../queries/query.ts';
+import '../styles/main.scss';
 
 const vuetify = createVuetify({
   components,
