@@ -1,22 +1,23 @@
 import { Chat } from '@/entities/chat';
 import { Platform } from '@/shared/model/platform';
+import { computed, ComputedRef, Ref } from 'vue';
 
 interface Link {
   title: string;
   to: string;
 }
 
-// TODO: make composable
-export function getChatLinks(chat?: Chat): Link[] {
+export function useGetChatLinks(chat: Ref<Chat | undefined>): ComputedRef<Link[]> {
   const commonLinks: Link[] = [{ title: 'Users', to: 'ChatUsers' }];
   const platformLinks: Record<Platform, Link[]> = {
     discord: [{ title: 'Herojob', to: 'Herojob' }],
     telegram: [{ title: 'Accordion', to: 'Accordion' }]
   };
 
-  if (!chat) return commonLinks;
+  return computed<Link[]>(() => {
+    if (!chat.value) return commonLinks;
+    const chatPlatformLinks = platformLinks[chat.value.platform] ?? [];
 
-  const chatPlatformLinks = platformLinks[chat.platform] ?? [];
-
-  return [...commonLinks, ...chatPlatformLinks];
+    return [...commonLinks, ...chatPlatformLinks];
+  });
 }
