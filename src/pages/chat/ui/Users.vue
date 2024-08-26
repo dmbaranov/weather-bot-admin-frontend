@@ -1,0 +1,25 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { useGetChatUsers } from '@/entities/user';
+import { Table } from '@/widgets/Table';
+import { User } from '@/entities/user';
+import { UpdateUserDialog } from '@/features/chat';
+
+const route = useRoute();
+const chatId = Array.isArray(route.params.chatId) ? route.params.chatId[0] : route.params.chatId;
+const { data: users, error } = useGetChatUsers(chatId);
+const userToUpdate = ref<User | undefined>();
+
+function handleEdit(user: User) {
+  userToUpdate.value = user;
+}
+</script>
+
+<template>
+  <VContainer class="fill-height">
+    <VAlert v-if="error" title="Something went wrong" :text="error.message" type="error" />
+    <Table :items="users ?? []" @edit="handleEdit" />
+    <UpdateUserDialog v-if="userToUpdate" :chat-id="chatId" :user-to-update="userToUpdate" @close="userToUpdate = undefined" />
+  </VContainer>
+</template>

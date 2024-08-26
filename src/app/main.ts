@@ -10,7 +10,7 @@ import App from './App.vue';
 // import router from '../router';
 import router from './router';
 import { customIconSet } from '../utils';
-import { queryClient } from '../queries/query.ts';
+import { queryClient } from '@/shared/api';
 import '../styles/main.scss';
 
 const vuetify = createVuetify({

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useGetChats } from '@/queries/chat.ts';
+import { useGetChats } from '@/entities/chat';
 
 const platformToColor = {
   telegram: 'blue',
