@@ -1,4 +1,4 @@
-import { baseApi } from '@/shared/api';
+import { baseApi } from '@/shared';
 import { mapChat } from '../lib/mapChat.ts';
 import { Chat } from '../model/types';
 import { GetChatDTO } from './types';

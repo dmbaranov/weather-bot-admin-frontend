@@ -2,10 +2,11 @@
 import { useRoute, useRouter } from 'vue-router';
 import { useGetSingleChat } from '@/entities/chat';
 import { useGetChatLinks } from '@/features/chat';
+import { getStringRouteParam } from '@/shared';
 
 const route = useRoute();
 const router = useRouter();
-const chatId = Array.isArray(route.params.chatId) ? route.params.chatId[0] : route.params.chatId;
+const chatId = getStringRouteParam(route.params.chatId);
 const { data: chat } = useGetSingleChat(chatId);
 const chatLinks = useGetChatLinks(chat);
 </script>

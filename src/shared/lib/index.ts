@@ -1,1 +1,0 @@
-export { getEnumValue } from './getEnumValue';

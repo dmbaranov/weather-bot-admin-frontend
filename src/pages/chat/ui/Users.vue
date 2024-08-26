@@ -5,9 +5,10 @@ import { useGetChatUsers } from '@/entities/user';
 import { Table } from '@/widgets/Table';
 import { User } from '@/entities/user';
 import { UpdateUserDialog } from '@/features/chat';
+import { getStringRouteParam } from '@/shared';
 
 const route = useRoute();
-const chatId = Array.isArray(route.params.chatId) ? route.params.chatId[0] : route.params.chatId;
+const chatId = getStringRouteParam(route.params.chatId);
 const { data: users, error } = useGetChatUsers(chatId);
 const userToUpdate = ref<User | undefined>();
 

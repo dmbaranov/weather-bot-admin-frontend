@@ -1,5 +1,5 @@
 import { Chat } from '@/entities/chat';
-import { Platform } from '@/shared/model/platform';
+import { Platform } from '@/shared';
 import { computed, ComputedRef, Ref } from 'vue';
 
 interface Link {

@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/vue-query';
-import { queryClient } from '@/shared/api';
+import { queryClient } from '@/shared';
 import { UpdateUserDTO } from '../api/types';
 import { userApi } from '../api/userApi';
 

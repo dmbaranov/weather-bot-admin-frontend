@@ -6,7 +6,7 @@ import { mdi, aliases } from 'vuetify/iconsets/mdi';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import { VueQueryPlugin } from '@tanstack/vue-query';
-import { queryClient } from '@/shared/api';
+import { queryClient } from '@/shared';
 import App from './App.vue';
 import router from './router';
 import { customIconSet } from './icons/icons.ts';
