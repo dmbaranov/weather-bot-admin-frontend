@@ -2,8 +2,6 @@
 import { computed, ref } from 'vue';
 import { VDataTable } from 'vuetify/components';
 
-type VDataTableItems = VDataTable['$props']['items'];
-
 const props = defineProps<{ items: T[] }>();
 const emit = defineEmits<{
   edit: [item: T];

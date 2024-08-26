@@ -1,5 +1,5 @@
-import discord from '@/components/icons/discord-icon.vue';
-import telegram from '@/components/icons/telegram-icon.vue';
+import discord from '@/app/icons/components/discord-icon.vue';
+import telegram from '@/app/icons/components/telegram-icon.vue';
 import type { IconProps, IconSet } from 'vuetify';
 import { type Component, h } from 'vue';
 

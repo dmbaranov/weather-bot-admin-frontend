@@ -6,6 +6,7 @@ interface Link {
   to: string;
 }
 
+// TODO: make composable
 export function getChatLinks(chat?: Chat): Link[] {
   const commonLinks: Link[] = [{ title: 'Users', to: 'ChatUsers' }];
   const platformLinks: Record<Platform, Link[]> = {

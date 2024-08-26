@@ -6,12 +6,11 @@ import { mdi, aliases } from 'vuetify/iconsets/mdi';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import { VueQueryPlugin } from '@tanstack/vue-query';
-import App from './App.vue';
-// import router from '../router';
-import router from './router';
-import { customIconSet } from '../utils';
 import { queryClient } from '@/shared/api';
-import '../styles/main.scss';
+import App from './App.vue';
+import router from './router';
+import { customIconSet } from './icons/icons.ts';
+import './styles/main.scss';
 
 const vuetify = createVuetify({
   components,
