@@ -1,39 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { Dashboard } from '@/pages/dashboard';
-import { Chat, Users } from '@/pages/chat';
-// import Chat from '@/views/chat/Page.vue';
-// import Users from '@/views/users/Users.vue';
-// import Herojob from '@/views/herojob/Herojob.vue';
-// import Accordion from '@/views/accordion/Accordion.vue';
+import { Accordion, Chat, Herojob, Users } from '@/pages/chat';
+import { RouteName } from '@/shared';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'Dashboard',
+      name: RouteName.DASHBOARD,
       component: Dashboard
     },
     {
       path: '/chat/:chatId',
-      name: 'Chat',
+      name: RouteName.CHAT,
       component: Chat,
       children: [
         {
           path: 'users',
-          name: 'ChatUsers',
+          name: RouteName.CHAT_USERS,
           component: Users
+        },
+        {
+          path: 'herojob',
+          name: RouteName.HEROJOB,
+          component: Herojob
+        },
+        {
+          path: 'accordion',
+          name: RouteName.ACCORDION,
+          component: Accordion
         }
-        //   {
-        //     path: 'herojob',
-        //     name: 'Herojob',
-        //     component: Herojob
-        //   },
-        //   {
-        //     path: 'accordion',
-        //     name: 'Accordion',
-        //     component: Accordion
-        //   }
       ]
     }
   ]

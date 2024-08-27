@@ -1,4 +1,4 @@
 export enum Platform {
-  discord = 'discord',
-  telegram = 'telegram'
+  DISCORD = 'discord',
+  TELEGRAM = 'telegram'
 }

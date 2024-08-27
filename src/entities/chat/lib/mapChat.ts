@@ -7,6 +7,6 @@ import { Chat } from '../model/types';
 export function mapChat(dto: GetChatDTO): Chat {
   return ChatSchema.parse({
     ...dto,
-    platform: getEnumValue(Platform, dto.platform)
+    platform: getEnumValue(Platform, dto.platform.toUpperCase())
   });
 }

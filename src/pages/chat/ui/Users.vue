@@ -18,7 +18,7 @@ function handleEdit(user: User) {
 </script>
 
 <template>
-  <VContainer class="fill-height">
+  <VContainer class="fill-height align-start">
     <VAlert v-if="error" title="Something went wrong" :text="error.message" type="error" />
     <Table :items="users ?? []" @edit="handleEdit" />
     <UpdateUserDialog v-if="userToUpdate" :chat-id="chatId" :user-to-update="userToUpdate" @close="userToUpdate = undefined" />

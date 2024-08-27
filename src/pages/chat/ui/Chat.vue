@@ -2,7 +2,7 @@
 import { useRoute, useRouter } from 'vue-router';
 import { useGetSingleChat } from '@/entities/chat';
 import { useGetChatLinks } from '@/features/chat';
-import { getStringRouteParam } from '@/shared';
+import { getStringRouteParam, RouteName } from '@/shared';
 
 const route = useRoute();
 const router = useRouter();
@@ -17,5 +17,12 @@ const chatLinks = useGetChatLinks(chat);
       {{ link.title }}
     </VListItem>
   </VNavigationDrawer>
+  <VEmptyState
+    v-if="route.name === RouteName.CHAT"
+    icon="mdi-application-cog"
+    headline="Ahoy!"
+    title="You opened chat settings"
+    text="Select what you want to do in the left menu"
+  />
   <RouterView />
 </template>
