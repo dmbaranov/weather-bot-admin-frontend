@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { Dashboard } from '@/pages/dashboard';
-import { Accordion, Chat, Herojob, Users } from '@/pages/chat';
 import { RouteName } from '@/shared';
+import { Accordion, Chat, Herojob, Users, Messages } from '@/pages/chat';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +30,11 @@ const router = createRouter({
           path: 'accordion',
           name: RouteName.ACCORDION,
           component: Accordion
+        },
+        {
+          path: 'messages',
+          name: RouteName.MESSAGES,
+          component: Messages
         }
       ]
     }

@@ -4,10 +4,10 @@ import { updateChatUser, User } from '@/entities/user';
 
 type UpdatableUser = Pick<User, 'name' | 'deleted' | 'banned' | 'moderator'>;
 
-const props = defineProps<{ chatId: string; userToUpdate: User }>();
+const { chatId, userToUpdate } = defineProps<{ chatId: string; userToUpdate: User }>();
 const emit = defineEmits<{ close: [] }>();
-const { mutate } = updateChatUser(props.chatId);
-const updatedUser = ref<UpdatableUser>({ ...props.userToUpdate });
+const { mutate } = updateChatUser(chatId);
+const updatedUser = ref<UpdatableUser>({ ...userToUpdate });
 
 function updateUserData<K extends keyof UpdatableUser>(field: K, value: User[K]) {
   updatedUser.value[field] = value;
@@ -16,7 +16,7 @@ function updateUserData<K extends keyof UpdatableUser>(field: K, value: User[K])
 function updateUser() {
   const { name, deleted, banned, moderator } = updatedUser.value;
 
-  mutate({ userId: props.userToUpdate.id, user: { name, deleted, banned, moderator } });
+  mutate({ userId: userToUpdate.id, user: { name, deleted, banned, moderator } });
   emit('close');
 }
 </script>

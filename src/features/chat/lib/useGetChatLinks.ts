@@ -1,6 +1,6 @@
-import { Chat } from '@/entities/chat';
-import { Platform } from '@/shared';
 import { computed, ComputedRef, Ref } from 'vue';
+import { Chat } from '@/entities/chat';
+import { Platform, RouteName } from '@/shared';
 
 interface Link {
   title: string;
@@ -8,10 +8,13 @@ interface Link {
 }
 
 export function useGetChatLinks(chat: Ref<Chat | undefined>): ComputedRef<Link[]> {
-  const commonLinks: Link[] = [{ title: 'Users', to: 'ChatUsers' }];
+  const commonLinks: Link[] = [
+    { title: 'Users', to: RouteName.CHAT_USERS },
+    { title: 'Messages', to: RouteName.MESSAGES }
+  ];
   const platformLinks: Record<Platform, Link[]> = {
-    discord: [{ title: 'Herojob', to: 'Herojob' }],
-    telegram: [{ title: 'Accordion', to: 'Accordion' }]
+    discord: [{ title: 'Herojob', to: RouteName.HEROJOB }],
+    telegram: [{ title: 'Accordion', to: RouteName.ACCORDION }]
   };
 
   return computed<Link[]>(() => {
