@@ -10,7 +10,7 @@ const { mutate } = sendMessageToChat(chatId);
 const messageText = ref('');
 
 function sendMessage() {
-  mutate({ message: 'qwe' });
+  mutate({ chatId, message: messageText.value });
 }
 </script>
 

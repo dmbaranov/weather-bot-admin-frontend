@@ -6,5 +6,6 @@ export interface GetChatDTO {
 }
 
 export interface SendMessageDTO {
+  chatId: string;
   message: string;
 }
