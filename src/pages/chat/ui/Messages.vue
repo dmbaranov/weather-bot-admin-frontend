@@ -18,7 +18,7 @@ function sendMessage() {
   <VContainer class="fill-height w-75">
     <VRow>
       <VForm class="w-100 d-flex flex-wrap" @submit.prevent="sendMessage">
-        <VTextarea class="w-100" label="Message" variant="outlined" v-model="messageText" />
+        <VTextarea v-model="messageText" class="w-100" label="Message" variant="outlined" />
         <VBtn class="ml-auto" type="submit" color="blue">Send</VBtn>
       </VForm>
     </VRow>
