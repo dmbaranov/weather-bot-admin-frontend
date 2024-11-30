@@ -4,3 +4,7 @@ export interface GetChatDTO {
   name: string;
   swearwordsConfig: string;
 }
+
+export interface SendMessageDTO {
+  message: string;
+}

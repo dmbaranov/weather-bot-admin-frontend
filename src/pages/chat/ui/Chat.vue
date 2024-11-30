@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useGetSingleChat } from '@/entities/chat';
 import { useGetChatLinks } from '@/features/chat';
 import { getStringRouteParam, RouteName } from '@/shared';
 
 const route = useRoute();
-const router = useRouter();
 const chatId = getStringRouteParam(route.params.chatId);
 const { data: chat } = useGetSingleChat(chatId);
 const chatLinks = useGetChatLinks(chat);
@@ -13,7 +12,7 @@ const chatLinks = useGetChatLinks(chat);
 
 <template>
   <VNavigationDrawer :model-value="true" permanent>
-    <VListItem v-for="link in chatLinks" :key="link.to" link @click="router.push({ name: link.to })">
+    <VListItem v-for="link in chatLinks" :key="link.to" link :to="{ name: link.to }">
       {{ link.title }}
     </VListItem>
   </VNavigationDrawer>
