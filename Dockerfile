@@ -1,6 +1,6 @@
 FROM node:latest AS builder
 WORKDIR /app
-COPY package.json yarn.lock .yarnrc.yaml ./
+COPY package.json yarn.lock ./
 RUN corepack enable && corepack prepare yarn@4.4.0 --activate
 RUN yarn config set nodeLinker node-modules
 RUN yarn install
