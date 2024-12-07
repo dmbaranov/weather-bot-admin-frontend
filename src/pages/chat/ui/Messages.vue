@@ -6,11 +6,15 @@ import { sendMessageToChat } from '@/entities/chat/lib/chatQueries.ts';
 
 const route = useRoute();
 const chatId = getStringRouteParam(route.params.chatId);
-const { mutate } = sendMessageToChat(chatId);
+const { mutateAsync, error } = sendMessageToChat(chatId);
 const messageText = ref('');
+const snackbarShown = ref(false);
 
 function sendMessage() {
-  mutate({ chatId, message: messageText.value });
+  mutateAsync({ chatId, message: messageText.value });
+
+  messageText.value = '';
+  snackbarShown.value = true;
 }
 </script>
 
@@ -23,4 +27,7 @@ function sendMessage() {
       </VForm>
     </VRow>
   </VContainer>
+  <VSnackbar v-model="snackbarShown" :timeout="2000">
+    <div>{{ error ? `Message sending failed: ${error}` : 'Message sent!' }}</div>
+  </VSnackbar>
 </template>
