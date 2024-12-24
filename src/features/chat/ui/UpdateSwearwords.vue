@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import { computed, ref, watchEffect } from 'vue';
+import { ref, watchEffect, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useGetChatSwearwords, useGetSingleChat, useSetChatSwearwords } from '@/entities/chat';
 import { getStringRouteParam } from '@/shared';
+import { useGetChatPlatform } from '../lib/useGetChatPlatform';
 
 const route = useRoute();
 const chatId = getStringRouteParam(route.params.chatId);
 const selectedConfig = ref('');
 const { data: swearwords, isLoading: swearwordsLoading } = useGetChatSwearwords();
-const { data: chat, isLoading: chatLoading } = useGetSingleChat(chatId);
-const dataLoading = computed(() => swearwordsLoading.value || chatLoading.value);
-const chatPlatform = computed(() => chat.value?.platform);
-const { mutate: setChatSwearwords } = useSetChatSwearwords(chatPlatform, chatId);
+const { data: chat } = useGetSingleChat(chatId);
+const { platform, isLoading: chatPlatformLoading } = useGetChatPlatform(chatId);
+const { mutate: setChatSwearwords } = useSetChatSwearwords(platform, chatId);
+const dataLoading = computed(() => swearwordsLoading.value || chatPlatformLoading.value);
 
 watchEffect(() => {
   if (chat.value) {
