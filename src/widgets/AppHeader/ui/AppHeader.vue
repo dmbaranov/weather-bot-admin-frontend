@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import weatherIcon from '@/shared/ui/assets/weather-icon.jpg';
+import { WeatherIcon } from '@/shared/ui';
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import weatherIcon from '@/shared/ui/assets/weather-icon.jpg';
       <RouterLink :to="{ name: 'Dashboard' }" class="link"> Weather Bot Admin Panel </RouterLink>
     </VAppBarTitle>
     <VSpacer />
-    <VImg :src="weatherIcon" position="right" class="mr-2" max-height="90%" />
+    <VImg :src="WeatherIcon" position="right" class="mr-2" max-height="90%" />
   </VAppBar>
 </template>
 

@@ -2,7 +2,7 @@
 import { ref, watchEffect, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useGetChatSwearwords, useGetSingleChat, useSetChatSwearwords } from '@/entities/chat';
-import { getStringRouteParam } from '@/shared';
+import { getStringRouteParam } from '@/shared/lib';
 import { useGetChatPlatform } from '../lib/useGetChatPlatform';
 
 const route = useRoute();

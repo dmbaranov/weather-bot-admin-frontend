@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { getStringRouteParam } from '@/shared';
+import { getStringRouteParam } from '@/shared/lib';
 import { useSendMessageToChat } from '@/entities/chat';
 import { useGetChatPlatform } from '../lib/useGetChatPlatform.ts';
 

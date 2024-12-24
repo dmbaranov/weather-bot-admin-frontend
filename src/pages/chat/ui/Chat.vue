@@ -2,7 +2,8 @@
 import { useRoute } from 'vue-router';
 import { useGetSingleChat } from '@/entities/chat';
 import { useGetChatLinks } from '@/features/chat';
-import { getStringRouteParam, RouteName } from '@/shared';
+import { getStringRouteParam } from '@/shared/lib';
+import { RouteName } from '@/shared/config';
 
 const route = useRoute();
 const chatId = getStringRouteParam(route.params.chatId);

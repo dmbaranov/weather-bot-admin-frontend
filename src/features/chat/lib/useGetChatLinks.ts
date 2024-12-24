@@ -1,6 +1,7 @@
 import { computed, ComputedRef, Ref } from 'vue';
 import { Chat } from '@/entities/chat';
-import { Platform, RouteName } from '@/shared';
+import { Platform } from '@/shared/model';
+import { RouteName } from '@/shared/config';
 
 interface Link {
   title: string;

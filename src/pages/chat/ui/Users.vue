@@ -5,7 +5,7 @@ import { useGetChatUsers } from '@/entities/user';
 import { Table } from '@/widgets/Table';
 import { User } from '@/entities/user';
 import { UpdateUserDialog } from '@/features/users';
-import { getStringRouteParam } from '@/shared';
+import { getStringRouteParam } from '@/shared/lib';
 
 const route = useRoute();
 const chatId = getStringRouteParam(route.params.chatId);

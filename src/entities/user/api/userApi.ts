@@ -1,4 +1,4 @@
-import { baseApi } from '@/shared';
+import { baseApi } from '@/shared/api';
 import { mapUser } from '../lib/mapUser';
 import { GetUserDTO, UpdateUserDTO } from './types.ts';
 

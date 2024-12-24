@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { Dashboard } from '@/pages/dashboard';
-import { RouteName } from '@/shared';
+import { RouteName } from '@/shared/config';
 import { Accordion, Chat, Herojob, Users, Messages, Swearwords } from '@/pages/chat';
 
 const router = createRouter({

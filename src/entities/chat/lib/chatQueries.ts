@@ -1,6 +1,6 @@
 import { Ref } from 'vue';
 import { useMutation, useQuery } from '@tanstack/vue-query';
-import { Platform } from '@/shared';
+import { Platform } from '@/shared/model';
 import { chatApi } from '../api/chatApi';
 import { SendMessageDTO, SetChatSwearwordsDTO } from '../api/types.ts';
 

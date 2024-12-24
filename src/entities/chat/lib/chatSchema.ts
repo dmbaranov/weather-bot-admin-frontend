@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { Platform } from '@/shared';
+import { Platform } from '@/shared/model';
 
 export const ChatSchema = z.object({
   id: z.string(),

@@ -1,4 +1,5 @@
-import { baseApi, Platform } from '@/shared';
+import { baseApi } from '@/shared/api';
+import { Platform } from '@/shared/model';
 import { mapChat } from '../lib/mapChat.ts';
 import { Chat } from '../model/types';
 import { GetChatDTO, SendMessageDTO, SetChatSwearwordsDTO } from './types';
