@@ -11,7 +11,7 @@ const { data: swearwords, isLoading: swearwordsLoading } = useGetChatSwearwords(
 const { data: chat, isLoading: chatLoading } = useGetSingleChat(chatId);
 const dataLoading = computed(() => swearwordsLoading.value || chatLoading.value);
 const chatPlatform = computed(() => chat.value?.platform);
-const { mutate: setChatSwearwords } = useSetChatSwearwords(chatId, chatPlatform);
+const { mutate: setChatSwearwords } = useSetChatSwearwords(chatPlatform, chatId);
 
 watchEffect(() => {
   if (chat.value) {

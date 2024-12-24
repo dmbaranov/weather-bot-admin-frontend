@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 import { useGetChatUsers } from '@/entities/user';
 import { Table } from '@/widgets/Table';
 import { User } from '@/entities/user';
-import { UpdateUserDialog } from '@/features/chat';
+import { UpdateUserDialog } from '@/features/users';
 import { getStringRouteParam } from '@/shared';
 
 const route = useRoute();

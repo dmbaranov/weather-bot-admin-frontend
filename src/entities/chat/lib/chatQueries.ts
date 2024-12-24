@@ -20,13 +20,6 @@ export function useGetSingleChat(chatId: string) {
   });
 }
 
-export function useSendMessageToChat(chatId: string) {
-  return useMutation({
-    mutationKey: [CHAT_QUERY_KEY],
-    mutationFn: (message: SendMessageDTO) => chatApi.sendMessage(chatId, message)
-  });
-}
-
 export function useGetChatSwearwords() {
   return useQuery({
     queryKey: [CHAT_QUERY_KEY],
@@ -34,7 +27,20 @@ export function useGetChatSwearwords() {
   });
 }
 
-export function useSetChatSwearwords(chatId: string, platform: Ref<Platform | undefined>) {
+export function useSendMessageToChat(platform: Ref<Platform | undefined>, chatId: string) {
+  return useMutation({
+    mutationKey: [CHAT_QUERY_KEY],
+    mutationFn: (message: SendMessageDTO) => {
+      if (!platform?.value) {
+        throw new Error('Platform is missing');
+      }
+
+      return chatApi.sendMessage(platform.value, chatId, message);
+    }
+  });
+}
+
+export function useSetChatSwearwords(platform: Ref<Platform | undefined>, chatId: string) {
   return useMutation({
     mutationKey: [CHAT_QUERY_KEY, chatId],
     mutationFn: (data: SetChatSwearwordsDTO) => {

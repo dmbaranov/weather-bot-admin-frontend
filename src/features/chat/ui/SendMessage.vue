@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { getStringRouteParam } from '@/shared';
-import { useSendMessageToChat } from '@/entities/chat';
+import { useGetSingleChat, useSendMessageToChat } from '@/entities/chat';
 
 const route = useRoute();
 const chatId = getStringRouteParam(route.params.chatId);
-const { mutateAsync, error } = useSendMessageToChat(chatId);
+const { data: chat } = useGetSingleChat(chatId);
+const chatPlatform = computed(() => chat.value?.platform);
+const { mutateAsync, error } = useSendMessageToChat(chatPlatform, chatId);
 const messageText = ref('');
 const snackbarShown = ref(false);
 

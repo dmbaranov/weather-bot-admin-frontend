@@ -12,8 +12,8 @@ export const chatApi = {
     return baseApi.get<GetChatDTO>(`/v1/chats/${chatId}`).then(({ data }) => mapChat(data));
   },
 
-  async sendMessage(chatId: string, message: SendMessageDTO): Promise<void> {
-    return baseApi.post(`/v1/chats/${chatId}/message`, message);
+  async sendMessage(platform: Platform, chatId: string, message: SendMessageDTO): Promise<void> {
+    return baseApi.post(`/v1/chats/${platform}/${chatId}/message`, message);
   },
 
   async getChatSwearwords(): Promise<string[]> {
