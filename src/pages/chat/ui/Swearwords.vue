@@ -9,8 +9,9 @@ const chatId = getStringRouteParam(route.params.chatId);
 const selectedConfig = ref('');
 const { data: swearwords, isLoading: swearwordsLoading } = useGetChatSwearwords();
 const { data: chat, isLoading: chatLoading } = useGetSingleChat(chatId);
-const { mutate: setChatSwearwords } = useSetChatSwearwords(chatId);
 const dataLoading = computed(() => swearwordsLoading.value || chatLoading.value);
+const chatPlatform = computed(() => chat.value?.platform);
+const { mutate: setChatSwearwords } = useSetChatSwearwords(chatId, chatPlatform);
 
 watchEffect(() => {
   if (chat.value) {
@@ -20,7 +21,7 @@ watchEffect(() => {
 
 function updateChatSwearwords() {
   if (chat.value) {
-    setChatSwearwords({ platform: chat.value.platform, data: { chatId: chat.value.id, swearwordsConfig: selectedConfig.value } });
+    setChatSwearwords({ chatId: chat.value.id, swearwordsConfig: selectedConfig.value });
   }
 }
 </script>

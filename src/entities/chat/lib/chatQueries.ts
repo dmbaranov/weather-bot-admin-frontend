@@ -1,3 +1,4 @@
+import { Ref } from 'vue';
 import { useMutation, useQuery } from '@tanstack/vue-query';
 import { Platform } from '@/shared';
 import { chatApi } from '../api/chatApi';
@@ -33,10 +34,15 @@ export function useGetChatSwearwords() {
   });
 }
 
-export function useSetChatSwearwords(chatId: string) {
+export function useSetChatSwearwords(chatId: string, platform: Ref<Platform | undefined>) {
   return useMutation({
     mutationKey: [CHAT_QUERY_KEY, chatId],
-    mutationFn: ({ platform, data }: { platform: Platform; data: SetChatSwearwordsDTO }) =>
-      chatApi.setChatSwearwords(platform, chatId, data)
+    mutationFn: (data: SetChatSwearwordsDTO) => {
+      if (!platform?.value) {
+        throw new Error('Platform is missing');
+      }
+
+      return chatApi.setChatSwearwords(platform.value, chatId, data);
+    }
   });
 }
