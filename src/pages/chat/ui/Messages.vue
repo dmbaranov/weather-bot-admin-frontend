@@ -2,11 +2,11 @@
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { getStringRouteParam } from '@/shared';
-import { sendMessageToChat } from '@/entities/chat/lib/chatQueries.ts';
+import { useSendMessageToChat } from '@/entities/chat';
 
 const route = useRoute();
 const chatId = getStringRouteParam(route.params.chatId);
-const { mutateAsync, error } = sendMessageToChat(chatId);
+const { mutateAsync, error } = useSendMessageToChat(chatId);
 const messageText = ref('');
 const snackbarShown = ref(false);
 

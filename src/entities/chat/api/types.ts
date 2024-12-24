@@ -9,3 +9,8 @@ export interface SendMessageDTO {
   chatId: string;
   message: string;
 }
+
+export interface SetChatSwearwordsDTO {
+  chatId: string;
+  swearwordsConfig: string;
+}

@@ -10,7 +10,8 @@ interface Link {
 export function useGetChatLinks(chat: Ref<Chat | undefined>): ComputedRef<Link[]> {
   const commonLinks: Link[] = [
     { title: 'Users', to: RouteName.CHAT_USERS },
-    { title: 'Messages', to: RouteName.MESSAGES }
+    { title: 'Messages', to: RouteName.MESSAGES },
+    { title: 'Swearwords', to: RouteName.SWEARWORDS }
   ];
   const platformLinks: Record<Platform, Link[]> = {
     discord: [{ title: 'Herojob', to: RouteName.HEROJOB }],

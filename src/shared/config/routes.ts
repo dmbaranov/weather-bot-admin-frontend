@@ -4,5 +4,6 @@ export enum RouteName {
   CHAT_USERS = 'ChatUsers',
   HEROJOB = 'Herojob',
   ACCORDION = 'Accordion',
-  MESSAGES = 'Messages'
+  MESSAGES = 'Messages',
+  SWEARWORDS = 'Swearwords'
 }

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { Dashboard } from '@/pages/dashboard';
 import { RouteName } from '@/shared';
-import { Accordion, Chat, Herojob, Users, Messages } from '@/pages/chat';
+import { Accordion, Chat, Herojob, Users, Messages, Swearwords } from '@/pages/chat';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +35,11 @@ const router = createRouter({
           path: 'messages',
           name: RouteName.MESSAGES,
           component: Messages
+        },
+        {
+          path: 'swearwords',
+          name: RouteName.SWEARWORDS,
+          component: Swearwords
         }
       ]
     }
