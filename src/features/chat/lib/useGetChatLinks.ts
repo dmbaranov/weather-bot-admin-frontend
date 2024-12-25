@@ -16,7 +16,7 @@ export function useGetChatLinks(chat: Ref<Chat | undefined>): ComputedRef<Link[]
   ];
   const platformLinks: Record<Platform, Link[]> = {
     discord: [{ title: 'Herojob', to: RouteName.HEROJOB }],
-    telegram: [{ title: 'Accordion', to: RouteName.ACCORDION }]
+    telegram: []
   };
 
   return computed<Link[]>(() => {

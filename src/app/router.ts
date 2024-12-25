@@ -25,11 +25,6 @@ const router = createRouter({
           component: () => import('@/pages/chat').then((m) => m.Herojob)
         },
         {
-          path: 'accordion',
-          name: RouteName.ACCORDION,
-          component: () => import('@/pages/chat').then((m) => m.Accordion)
-        },
-        {
           path: 'messages',
           name: RouteName.MESSAGES,
           component: () => import('@/pages/chat').then((m) => m.Messages)
