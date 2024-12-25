@@ -22,7 +22,7 @@ export function useGetSingleChat(chatId: string) {
 
 export function useGetChatSwearwords() {
   return useQuery({
-    queryKey: [CHAT_QUERY_KEY],
+    queryKey: [CHAT_QUERY_KEY, 'swearwords'],
     queryFn: chatApi.getChatSwearwords
   });
 }
