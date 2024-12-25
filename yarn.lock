@@ -1723,6 +1723,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es-module-lexer@npm:^1.4.1":
+  version: 1.5.4
+  resolution: "es-module-lexer@npm:1.5.4"
+  checksum: 10c0/300a469488c2f22081df1e4c8398c78db92358496e639b0df7f89ac6455462aaf5d8893939087c1a1cbcbf20eed4610c70e0bcb8f3e4b0d80a5d2611c539408c
+  languageName: node
+  linkType: hard
+
 "esbuild@npm:^0.24.0":
   version: 0.24.0
   resolution: "esbuild@npm:0.24.0"
@@ -2164,6 +2171,8 @@ __metadata:
     typescript: "npm:5.6.3"
     typescript-eslint: "npm:8.16.0"
     vite: "npm:6.0.1"
+    vite-bundle-analyzer: "npm:^0.15.2"
+    vite-plugin-chunk-split: "npm:^0.5.0"
     vue: "npm:3.5.13"
     vue-router: "npm:4.5.0"
     vue-tsc: "npm:2.1.10"
@@ -2403,6 +2412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"import-meta-resolve@npm:^4.0.0":
+  version: 4.1.0
+  resolution: "import-meta-resolve@npm:4.1.0"
+  checksum: 10c0/42f3284b0460635ddf105c4ad99c6716099c3ce76702602290ad5cbbcd295700cbc04e4bdf47bacf9e3f1a4cec2e1ff887dabc20458bef398f9de22ddff45ef5
+  languageName: node
+  linkType: hard
+
 "imurmurhash@npm:^0.1.4":
   version: 0.1.4
   resolution: "imurmurhash@npm:0.1.4"
@@ -2629,6 +2645,15 @@ __metadata:
   dependencies:
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
   checksum: 10c0/c52c2a6e699dfa8a840e13154da35464a40cd8b07049b695a8b282883b0426c0811af1e36ac26860b4267289340b42772c156a5608e87be97b63d510e617e87a
+  languageName: node
+  linkType: hard
+
+"magic-string@npm:^0.30.5":
+  version: 0.30.17
+  resolution: "magic-string@npm:0.30.17"
+  dependencies:
+    "@jridgewell/sourcemap-codec": "npm:^1.5.0"
+  checksum: 10c0/16826e415d04b88378f200fe022b53e638e3838b9e496edda6c0e086d7753a44a6ed187adc72d19f3623810589bf139af1a315541cd6a26ae0771a0193eaf7b8
   languageName: node
   linkType: hard
 
@@ -3719,6 +3744,28 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 10c0/41a5bdd214df2f6c3ecf8622745e4a366c4adced864bc3c833739791aeeeb1838119af7daed4ba36428114b5c67dcda034a79c882e97e43c03e66a4dd7389942
+  languageName: node
+  linkType: hard
+
+"vite-bundle-analyzer@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "vite-bundle-analyzer@npm:0.15.2"
+  bin:
+    analyze: dist/bin.js
+  checksum: 10c0/8fd3c6e34cca1f9737f252fbfd7085f30ad0054672242ed1d84d180ae1312c545efe7abc915d2b7a1adb2d7f27c35f126c5687c1ef9ad9f716368680ed4aa005
+  languageName: node
+  linkType: hard
+
+"vite-plugin-chunk-split@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "vite-plugin-chunk-split@npm:0.5.0"
+  dependencies:
+    es-module-lexer: "npm:^1.4.1"
+    import-meta-resolve: "npm:^4.0.0"
+    magic-string: "npm:^0.30.5"
+  peerDependencies:
+    vite: ^4 || ^5
+  checksum: 10c0/63cb3ca78b125c75a1ce61a04e75bd7df28599e8dd8931876620160cbc78d971c9952d21e1ff763f397cdd275f44a6db4553d7f6520f2deef9898136c4d85b64
   languageName: node
   linkType: hard
 

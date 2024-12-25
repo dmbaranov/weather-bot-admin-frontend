@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { Dashboard } from '@/pages/dashboard';
 import { RouteName } from '@/shared/config';
-import { Accordion, Chat, Herojob, Users, Messages, Swearwords } from '@/pages/chat';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,37 +7,37 @@ const router = createRouter({
     {
       path: '/',
       name: RouteName.DASHBOARD,
-      component: Dashboard
+      component: () => import('@/pages/dashboard').then((m) => m.Dashboard)
     },
     {
       path: '/chat/:chatId',
       name: RouteName.CHAT,
-      component: Chat,
+      component: () => import('@/pages/chat').then((m) => m.Chat),
       children: [
         {
           path: 'users',
           name: RouteName.CHAT_USERS,
-          component: Users
+          component: () => import('@/pages/chat').then((m) => m.Users)
         },
         {
           path: 'herojob',
           name: RouteName.HEROJOB,
-          component: Herojob
+          component: () => import('@/pages/chat').then((m) => m.Herojob)
         },
         {
           path: 'accordion',
           name: RouteName.ACCORDION,
-          component: Accordion
+          component: () => import('@/pages/chat').then((m) => m.Accordion)
         },
         {
           path: 'messages',
           name: RouteName.MESSAGES,
-          component: Messages
+          component: () => import('@/pages/chat').then((m) => m.Messages)
         },
         {
           path: 'swearwords',
           name: RouteName.SWEARWORDS,
-          component: Swearwords
+          component: () => import('@/pages/chat').then((m) => m.Swearwords)
         }
       ]
     }
