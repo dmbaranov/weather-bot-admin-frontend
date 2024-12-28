@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
-import { getStringRouteParam } from '@/shared/lib';
 import { useSendMessageToChat } from '@/entities/chat';
 import { useGetChatPlatform } from '../lib/useGetChatPlatform.ts';
+import { useGetChatId } from '../lib/useGetChatId.ts';
 
-const route = useRoute();
-const chatId = getStringRouteParam(route.params.chatId);
+const chatId = useGetChatId();
 const { platform } = useGetChatPlatform(chatId);
 const { mutateAsync, error } = useSendMessageToChat(platform, chatId);
 const messageText = ref('');

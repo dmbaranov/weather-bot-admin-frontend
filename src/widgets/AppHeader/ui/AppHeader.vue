@@ -8,7 +8,7 @@ import { WeatherIcon } from '@/shared/ui';
       <RouterLink :to="{ name: 'Dashboard' }" class="link"> Weather Bot Admin Panel </RouterLink>
     </VAppBarTitle>
     <VSpacer />
-    <VImg :src="WeatherIcon" position="right" class="mr-2" max-height="90%" />
+    <VImg :src="WeatherIcon" position="right" class="mr-2" max-height="70%" />
   </VAppBar>
 </template>
 

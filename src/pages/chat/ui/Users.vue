@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
 import { useGetChatUsers } from '@/entities/user';
 import { Table } from '@/widgets/Table';
 import { User } from '@/entities/user';
 import { UpdateUserDialog } from '@/features/users';
-import { getStringRouteParam } from '@/shared/lib';
+import { useGetChatId } from '@/features/chat';
 
-const route = useRoute();
-const chatId = getStringRouteParam(route.params.chatId);
+const chatId = useGetChatId();
 const { data: users, error } = useGetChatUsers(chatId);
 const userToUpdate = ref<User | undefined>();
 

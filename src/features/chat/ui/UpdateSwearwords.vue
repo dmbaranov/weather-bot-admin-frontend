@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref, watchEffect, computed } from 'vue';
-import { useRoute } from 'vue-router';
 import { useGetChatSwearwords, useGetSingleChat, useSetChatSwearwords } from '@/entities/chat';
-import { getStringRouteParam } from '@/shared/lib';
 import { useGetChatPlatform } from '../lib/useGetChatPlatform';
+import { useGetChatId } from '../lib/useGetChatId.ts';
 
-const route = useRoute();
-const chatId = getStringRouteParam(route.params.chatId);
+const chatId = useGetChatId();
 const selectedConfig = ref('');
 const { data: swearwords, isLoading: swearwordsLoading } = useGetChatSwearwords();
 const { data: chat } = useGetSingleChat(chatId);
