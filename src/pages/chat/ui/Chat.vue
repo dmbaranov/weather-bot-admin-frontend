@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { useGetSingleChat } from '@/entities/chat';
-import { useGetChatLinks, useGetChatId } from '@/features/chat';
+import { useGetChatLinks } from '@/features/chat';
 import { RouteName } from '@/shared/config';
+import { useGetChatId } from '@/shared/lib';
 
 const route = useRoute();
 const chatId = useGetChatId();

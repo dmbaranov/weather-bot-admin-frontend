@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useSendMessageToChat } from '@/entities/chat';
+import { useGetChatId } from '@/shared/lib';
 import { useGetChatPlatform } from '../lib/useGetChatPlatform.ts';
-import { useGetChatId } from '../lib/useGetChatId.ts';
 
 const chatId = useGetChatId();
 const { platform } = useGetChatPlatform(chatId);

@@ -2,7 +2,7 @@
 import { ref, watchEffect, computed } from 'vue';
 import { useGetChatSwearwords, useGetSingleChat, useSetChatSwearwords } from '@/entities/chat';
 import { useGetChatPlatform } from '../lib/useGetChatPlatform';
-import { useGetChatId } from '../lib/useGetChatId.ts';
+import { useGetChatId } from '@/shared/lib';
 
 const chatId = useGetChatId();
 const selectedConfig = ref('');

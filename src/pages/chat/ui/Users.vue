@@ -4,7 +4,7 @@ import { useGetChatUsers } from '@/entities/user';
 import { Table } from '@/widgets/Table';
 import { User } from '@/entities/user';
 import { UpdateUserDialog } from '@/features/users';
-import { useGetChatId } from '@/features/chat';
+import { useGetChatId } from '@/shared/lib';
 
 const chatId = useGetChatId();
 const { data: users, error } = useGetChatUsers(chatId);
