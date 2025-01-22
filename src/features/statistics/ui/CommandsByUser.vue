@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Chart, registerables } from 'chart.js';
 import { Bar } from 'vue-chartjs';
 import { useGetChatId } from '@/shared/lib';
 import { Statistics, useGetChatStatistics } from '@/entities/statistics/';
 import { useGetChatUsers } from '@/entities/user';
-import { computed } from 'vue';
 
 Chart.register(...registerables);
 
