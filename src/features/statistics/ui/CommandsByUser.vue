@@ -16,19 +16,21 @@ const numberOfCommandsUsedByUserData = computed(() => {
   if (!users.value || !statistics.value) return { labels: [], datasets: [] };
 
   const commandToUserIdMap = statistics.value.reduce(
-    (acc: Record<string, Statistics[]>, command: Statistics) => ({
+    (acc: Record<string, number>, command: Statistics) => ({
       ...acc,
-      [command.botUserId]: acc[command.botUserId] ? [...acc[command.botUserId], command] : [command]
+      [command.botUserId]: acc[command.botUserId] ? acc[command.botUserId] + 1 : 1
     }),
     {}
   );
 
   return {
     labels: ['Number of commands used'],
-    datasets: Object.entries(commandToUserIdMap).map(([userId, commands]) => ({
-      label: users.value.find((u) => u.id === userId)?.name ?? 'Unknown user',
-      data: [commands.length]
-    }))
+    datasets: Object.entries(commandToUserIdMap)
+      .sort((a, b) => b[1] - a[1])
+      .map(([userId, commands]) => ({
+        label: users.value.find((u) => u.id === userId)?.name ?? 'Unknown user',
+        data: [commands]
+      }))
   };
 });
 </script>

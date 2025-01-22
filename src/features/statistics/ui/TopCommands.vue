@@ -23,10 +23,12 @@ const topCommands = computed(() => {
 
   return {
     labels: ['Number of commands used'],
-    datasets: Object.entries(commandInvocationsMap).map(([command, invocations]) => ({
-      label: command,
-      data: [invocations]
-    }))
+    datasets: Object.entries(commandInvocationsMap)
+      .sort((a, b) => b[1] - a[1])
+      .map(([command, invocations]) => ({
+        label: command,
+        data: [invocations]
+      }))
   };
 });
 </script>
