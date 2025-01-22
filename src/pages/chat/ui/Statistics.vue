@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { CommandsByUser, AllCommandsTimeline, TopCommands } from '@/features/statistics';
+import { TopUsers, AllCommandsTimeline, TopCommands } from '@/features/statistics';
 </script>
 
 <template>
-  <CommandsByUser />
+  <TopUsers />
   <AllCommandsTimeline />
   <TopCommands />
 </template>
