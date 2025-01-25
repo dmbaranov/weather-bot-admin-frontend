@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ComputedRef, ref } from 'vue';
 import { Bar } from 'vue-chartjs';
 import { useGetChatId } from '@/shared/lib';
 import { Statistics, useGetChatStatistics } from '@/entities/statistics';
 import { useGetChatUsers } from '@/entities/user';
+import { ChartData, ChartOptions } from 'chart.js';
 
 const chatId = useGetChatId();
 const { data: statistics } = useGetChatStatistics(chatId);
@@ -19,7 +20,7 @@ const selectableUsers = computed(() => {
   }));
 });
 
-const userCommandsTimeline = computed(() => {
+const userCommandsTimeline: ComputedRef<ChartData<'bar'>> = computed(() => {
   if (!statistics.value || !users.value || !selectedUser.value) return { labels: [], datasets: [] };
 
   const userCommands = statistics.value.filter((command) => command.botUserId === selectedUser.value);
@@ -56,17 +57,19 @@ const userCommandsTimeline = computed(() => {
   };
 });
 
-const chartOptions = {
+const chartOptions: ChartOptions<'bar'> = {
   responsive: true,
-  x: {
-    stacked: true
+  scales: {
+    x: {
+      stacked: true
+    }
   },
   interaction: {
     mode: 'x'
   },
   plugins: {
     tooltip: {
-      filter: (item) => item.raw > 0
+      filter: (item) => Number(item.raw) > 0
     }
   }
 };
