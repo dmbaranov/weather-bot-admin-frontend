@@ -85,6 +85,11 @@ const chartOptions = {
   },
   interaction: {
     mode: 'x'
+  },
+  plugins: {
+    tooltip: {
+      filter: (item) => item.raw > 0
+    }
   }
 };
 </script>
