@@ -23,37 +23,15 @@ const userCommandsTimeline = computed(() => {
   if (!statistics.value || !users.value || !selectedUser.value) return { labels: [], datasets: [] };
 
   const userCommands = statistics.value.filter((command) => command.botUserId === selectedUser.value);
-  const userTimeline = userCommands.reduce((acc: Record<string, Record<string, number>>, item: Statistics) => {
-    const commandMonth = new Date(item.timestamp).getMonth() + 1;
-    const commandYear = new Date(item.timestamp).getFullYear();
-    const key = `${commandMonth}/${commandYear}`;
+  const userTimeline = userCommands.reduce((acc: Record<string, Record<string, number>>, { command, timestamp }: Statistics) => {
+    const date = new Date(timestamp);
+    const key = `${date.getMonth() + 1}/${date.getFullYear()}`;
 
-    if (acc[key]) {
-      if (acc[key][item.command]) {
-        return {
-          ...acc,
-          [key]: {
-            ...acc[key],
-            [item.command]: acc[key][item.command] + 1
-          }
-        };
-      } else {
-        return {
-          ...acc,
-          [key]: {
-            ...acc[key],
-            [item.command]: 1
-          }
-        };
-      }
-    } else {
-      return {
-        ...acc,
-        [key]: {
-          [item.command]: 1
-        }
-      };
-    }
+    acc[key] ??= {};
+    acc[key][command] ??= 0;
+    acc[key][command] += 1;
+
+    return acc;
   }, {});
 
   const allUsedCommands = [...new Set(userCommands.map((command) => command.command))];
