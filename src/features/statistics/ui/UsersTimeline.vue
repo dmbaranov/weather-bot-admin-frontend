@@ -69,6 +69,5 @@ const chartOptions: ChartOptions<'bar'> = {
 
 <template>
   <VSelect v-model="selectedUser" label="User" variant="outlined" :items="selectableUsers" />
-  <Bar :data="userCommandsTimeline" :options="chartOptions" />
-  <div style="height: 500px"></div>
+  <Bar v-if="selectedUser" :data="userCommandsTimeline" :options="chartOptions" />
 </template>
