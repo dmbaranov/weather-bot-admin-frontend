@@ -1,25 +1,20 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Chart, registerables } from 'chart.js';
+import { computed, ComputedRef } from 'vue';
+import { Chart, ChartData, registerables } from 'chart.js';
 import { Bar } from 'vue-chartjs';
 import { useGetChatId } from '@/shared/lib';
-import { Statistics, useGetChatStatistics } from '@/entities/statistics/';
+import { useGetChatStatistics } from '@/entities/statistics/';
+import { getGroupedData } from '../lib/chartUtils';
 
 Chart.register(...registerables);
 
 const chatId = useGetChatId();
 const { data: statistics } = useGetChatStatistics(chatId);
 
-const topCommands = computed(() => {
+const topCommands: ComputedRef<ChartData<'bar'>> = computed(() => {
   if (!statistics.value) return { labels: [], datasets: [] };
 
-  const commandInvocationsMap = statistics.value.reduce(
-    (acc: Record<string, number>, command: Statistics) => ({
-      ...acc,
-      [command.command]: acc[command.command] ? acc[command.command] + 1 : 1
-    }),
-    {}
-  );
+  const commandInvocationsMap = getGroupedData(statistics.value, 'command');
 
   return {
     labels: ['Number of commands used'],

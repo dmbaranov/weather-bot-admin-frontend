@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed, ComputedRef, ref } from 'vue';
+import { ChartData, ChartOptions } from 'chart.js';
 import { Bar } from 'vue-chartjs';
 import { useGetChatId } from '@/shared/lib';
 import { Statistics, useGetChatStatistics } from '@/entities/statistics';
 import { useGetChatUsers } from '@/entities/user';
-import { ChartData, ChartOptions } from 'chart.js';
+import { sortMonthYearKeys } from '../lib/chartUtils';
 
 const chatId = useGetChatId();
 const { data: statistics } = useGetChatStatistics(chatId);
@@ -37,16 +38,7 @@ const userCommandsTimeline: ComputedRef<ChartData<'bar'>> = computed(() => {
 
   const allUsedCommands = [...new Set(userCommands.map((command) => command.command))];
 
-  const sortedKeysByMonthAndYear = Object.keys(userTimeline).sort((a, b) => {
-    const [aMonth, aYear] = a.split('/');
-    const [bMonth, bYear] = b.split('/');
-
-    if (aYear === bYear) {
-      return Number(aMonth) - Number(bMonth);
-    }
-
-    return Number(aYear) - Number(bYear);
-  });
+  const sortedKeysByMonthAndYear = sortMonthYearKeys(userTimeline);
 
   return {
     labels: sortedKeysByMonthAndYear,
