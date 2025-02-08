@@ -29,7 +29,7 @@ baseApi.interceptors.response.use(
       <RouterView />
     </VMain>
   </VApp>
-  <VSnackbar v-model="showSnackbar" :timeout="5000" color="error">
+  <VSnackbar v-model="showSnackbar" :timeout="5000" color="error" location="right">
     <div>Something went wrong, try again later</div>
     <template #actions>
       <VBtn icon="mdi-close" variant="plain" @click="showSnackbar = false" />
