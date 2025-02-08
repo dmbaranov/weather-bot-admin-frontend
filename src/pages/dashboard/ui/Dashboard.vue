@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useGetChats } from '@/entities/chat';
+import { getErrorMessage } from '@/shared/lib';
 
 const platformToColor = {
   telegram: 'blue',
@@ -12,7 +13,7 @@ const { data: chats, error } = useGetChats();
 <template>
   <VContainer class="fill-height">
     <VRow justify="center">
-      <VAlert v-if="error" title="Something went wrong" :text="error.message" type="error" />
+      <VEmptyState v-if="error" icon="mdi-alert" title="Something went wrong" :text="getErrorMessage(error)" />
       <template v-else>
         <VCol v-for="chat in chats" :key="chat.id" class="flex-grow-0">
           <VBtn :color="platformToColor[chat.platform]" :to="{ name: 'Chat', params: { chatId: chat.id } }">
