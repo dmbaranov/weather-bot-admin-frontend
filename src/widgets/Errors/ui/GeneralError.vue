@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getErrorMessage } from '../lib/getErrorMessage';
 
-defineProps<{ error: unknown }>();
+const { error } = defineProps<{ error: unknown }>();
 </script>
 
 <template>

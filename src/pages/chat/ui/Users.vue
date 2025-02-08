@@ -5,9 +5,10 @@ import { Table } from '@/widgets/Table';
 import { User } from '@/entities/user';
 import { UpdateUserDialog } from '@/features/users';
 import { useGetChatId } from '@/shared/lib';
+import { GeneralError } from '@/widgets/Errors';
 
 const chatId = useGetChatId();
-const { data: users, error } = useGetChatUsers(chatId);
+const { data: users, isLoading, error } = useGetChatUsers(chatId);
 const userToUpdate = ref<User | undefined>();
 
 function handleEdit(user: User) {
@@ -16,9 +17,9 @@ function handleEdit(user: User) {
 </script>
 
 <template>
+  <GeneralError :error="error" />
   <VContainer class="fill-height align-start">
-    <VAlert v-if="error" title="Something went wrong" :text="error.message" type="error" />
-    <Table :items="users ?? []" @edit="handleEdit" />
+    <Table :items="users ?? []" :loading="isLoading" @edit="handleEdit" />
     <UpdateUserDialog v-if="userToUpdate" :chat-id="chatId" :user-to-update="userToUpdate" @close="userToUpdate = undefined" />
   </VContainer>
 </template>

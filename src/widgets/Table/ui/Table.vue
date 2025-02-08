@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue';
 import { VDataTable } from 'vuetify/components';
 
-const { items } = defineProps<{ items: T[] }>();
+const { items, loading } = defineProps<{ items: T[]; loading?: boolean }>();
 const emit = defineEmits<{
   edit: [item: T];
 }>();
@@ -32,7 +32,7 @@ const tableHeaders = computed(() => {
     <template #text>
       <VTextField v-model="searchTerm" label="Search" prepend-inner-icon="mdi-magnify" variant="outlined" hide-details class="ma-6" />
     </template>
-    <VDataTable :headers="tableHeaders" :items="items" :search="searchTerm">
+    <VDataTable :headers="tableHeaders" :items="items" :search="searchTerm" :loading="loading">
       <template #item.actions="{ item }">
         <VIcon size="small" @click="emit('edit', item)">mdi-pencil</VIcon>
       </template>
