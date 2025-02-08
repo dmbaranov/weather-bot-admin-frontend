@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed, ComputedRef, ref } from 'vue';
-import { ChartData, ChartOptions } from 'chart.js';
+import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
 import { Bar } from 'vue-chartjs';
 import { useGetChatId } from '@/shared/lib';
 import { Statistics, useGetChatStatistics } from '@/entities/statistics';
 import { useGetChatUsers } from '@/entities/user';
 import { sortMonthYearKeys } from '../lib/chartUtils';
+
+Chart.register(...registerables);
 
 const chatId = useGetChatId();
 const { data: statistics } = useGetChatStatistics(chatId);
@@ -68,6 +70,6 @@ const chartOptions: ChartOptions<'bar'> = {
 </script>
 
 <template>
-  <VSelect v-model="selectedUser" label="User" variant="outlined" :items="selectableUsers" />
+  <VAutocomplete v-model="selectedUser" label="User" variant="outlined" :items="selectableUsers" />
   <Bar v-if="selectedUser" :data="userCommandsTimeline" :options="chartOptions" />
 </template>

@@ -29,7 +29,6 @@ export function useGetChatSwearwords() {
 
 export function useSendMessageToChat(platform: Ref<Platform | undefined>, chatId: string) {
   return useMutation({
-    mutationKey: [CHAT_QUERY_KEY],
     mutationFn: (message: SendMessageDTO) => {
       if (!platform?.value) {
         throw new Error('Platform is missing');
@@ -42,7 +41,6 @@ export function useSendMessageToChat(platform: Ref<Platform | undefined>, chatId
 
 export function useSetChatSwearwords(platform: Ref<Platform | undefined>, chatId: string) {
   return useMutation({
-    mutationKey: [CHAT_QUERY_KEY, chatId],
     mutationFn: (data: SetChatSwearwordsDTO) => {
       if (!platform?.value) {
         throw new Error('Platform is missing');

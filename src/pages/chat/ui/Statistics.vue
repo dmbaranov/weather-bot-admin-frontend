@@ -2,7 +2,7 @@
 import { TopUsers, CommandsTimeline, TopCommands, UsersTimeline } from '@/features/statistics';
 import { ref } from 'vue';
 
-const selectedTab = ref('Users timeline');
+const selectedTab = ref('Top users');
 
 const charts = [
   {

@@ -14,7 +14,6 @@ export function useGetChatUsers(chatId: string) {
 
 export function updateChatUser(chatId: string) {
   return useMutation({
-    mutationKey: [USER_QUERY_KEY],
     mutationFn: ({ userId, user }: { userId: string; user: UpdateUserDTO }) => userApi.updateChatUser(chatId, userId, user),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [USER_QUERY_KEY] });
