@@ -1,5 +1,11 @@
-# Vue 3 + TypeScript + Vite
+# Weather Bot admin FE
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is UI part of the admin panel to control [WeatherAdminBot](https://github.com/dmbaranov/CoopWeatherBot). Built with Vue 3 and TypeScript using [FSD metodology](https://feature-sliced.design).
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+
+## How to run:
+- Install dependencies with `yarn install`;
+- Run `yarn dev` to run the app in development mode;
+- Build Docker image to run app in production mode
+  - `docker build -t weatherbot-admin-fe .`
+  - `docker run -d -p 8081:8081 --name weatherbot-admin-fe weatherbot-admin-fe`
