@@ -38,6 +38,11 @@ const router = createRouter({
           path: 'statistics',
           name: RouteName.STATISTICS,
           component: () => import('@/pages/chat').then((m) => m.Statistics)
+        },
+        {
+          path: 'chat-config',
+          name: RouteName.CHAT_CONFIG,
+          component: () => import('@/pages/chat').then((m) => m.ChatConfig)
         }
       ]
     }

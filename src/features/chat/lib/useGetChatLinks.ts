@@ -13,7 +13,8 @@ export function useGetChatLinks(chat: Ref<Chat | undefined>): ComputedRef<Link[]
     { title: 'Users', to: RouteName.CHAT_USERS },
     { title: 'Messages', to: RouteName.MESSAGES },
     { title: 'Swearwords', to: RouteName.SWEARWORDS },
-    { title: 'Statistics', to: RouteName.STATISTICS }
+    { title: 'Statistics', to: RouteName.STATISTICS },
+    { title: 'Chat config', to: RouteName.CHAT_CONFIG }
   ];
   const platformLinks: Record<Platform, Link[]> = {
     discord: [{ title: 'Herojob', to: RouteName.HEROJOB }],

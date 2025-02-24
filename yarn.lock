@@ -822,6 +822,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4":
+  version: 4.17.15
+  resolution: "@types/lodash@npm:4.17.15"
+  checksum: 10c0/2eb2dc6d231f5fb4603d176c08c8d7af688f574d09af47466a179cd7812d9f64144ba74bb32ca014570ffdc544eedc51b7a5657212bad083b6eecbd72223f9bb
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^22.10.1":
   version: 22.10.1
   resolution: "@types/node@npm:22.10.1"
@@ -2179,6 +2186,7 @@ __metadata:
     "@tanstack/vue-query": "npm:5.62.0"
     "@tanstack/vue-query-devtools": "npm:5.62.0"
     "@types/eslint": "npm:9.6.1"
+    "@types/lodash": "npm:^4"
     "@types/node": "npm:^22.10.1"
     "@typescript-eslint/eslint-plugin": "npm:8.16.0"
     "@vitejs/plugin-vue": "npm:5.2.1"
@@ -2186,6 +2194,7 @@ __metadata:
     chart.js: "npm:^4.4.7"
     eslint: "npm:9.16.0"
     eslint-plugin-vue: "npm:9.32.0"
+    lodash: "npm:^4.17.21"
     pinia: "npm:2.2.8"
     prettier: "npm:3.4.1"
     sass: "npm:1.81.0"
