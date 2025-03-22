@@ -20,3 +20,12 @@ export function useUpdateChatConfig() {
     }
   });
 }
+
+export function useCreateChatConfig(chatId: string) {
+  return useMutation({
+    mutationFn: () => chatConfigApi.createChatConfig(chatId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [CHAT_CONFIG_QUERY_KEY] });
+    }
+  });
+}
