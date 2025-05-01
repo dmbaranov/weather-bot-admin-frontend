@@ -50,7 +50,7 @@ function saveConfig() {
       <VExpansionPanel>
         <VExpansionPanelTitle>News</VExpansionPanelTitle>
         <VExpansionPanelText>
-          <VSwitch v-model="newsDisabled" label="Enabled" />
+          <VSwitch v-model="newsDisabled" label="Disabled" />
         </VExpansionPanelText>
       </VExpansionPanel>
     </VExpansionPanels>
