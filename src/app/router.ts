@@ -30,11 +30,6 @@ const router = createRouter({
           component: () => import('@/pages/chat').then((m) => m.Messages)
         },
         {
-          path: 'swearwords',
-          name: RouteName.SWEARWORDS,
-          component: () => import('@/pages/chat').then((m) => m.Swearwords)
-        },
-        {
           path: 'statistics',
           name: RouteName.STATISTICS,
           component: () => import('@/pages/chat').then((m) => m.Statistics)

@@ -14,5 +14,9 @@ export const chatConfigApi = {
 
   async updateChatConfig(config: UpdateChatConfigDTO): Promise<ChatConfig> {
     return baseApi.put<GetChatConfigDTO>(`/v1/chatconfig`, config).then(({ data }) => mapChatConfig(data));
+  },
+
+  async getSwearwords(): Promise<string[]> {
+    return baseApi.get('v1/chatconfig/swearwords').then(({ data }) => data);
   }
 };

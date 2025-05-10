@@ -12,6 +12,13 @@ export function useGetChatConfig(chatId: string) {
   });
 }
 
+export function useGetSwearwords() {
+  return useQuery({
+    queryKey: [CHAT_CONFIG_QUERY_KEY, 'swearwords'],
+    queryFn: chatConfigApi.getSwearwords
+  });
+}
+
 export function useUpdateChatConfig() {
   return useMutation({
     mutationFn: (config: UpdateChatConfigDTO) => chatConfigApi.updateChatConfig(config),
